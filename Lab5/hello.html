@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script>
+			let array = ["delfin", "dikobraz", "drozd"];
+
+			function check(form) {
+				for (var i = 0; i < array.length; i++) {
+					if (form.text.value == array[i]) {
+						return true;
+					}
+					for (var j = 0; j < 10; j++) {
+						if (form.text.value == array[i] + " " + j) {
+							return true;
+						}
+					}
+				}
+				alert("Data Error");
+				return false;
+			}
+
+		</script>
+	</head>
+	
+	<body>
+		<form method="post" onsubmit="return check(this)">
+			<textarea name="text" rows="3" cols="30"></textarea>
+			<input type="submit" value="Submit text" />
+		</form>
+		
+	</body>
+	
+</html>
