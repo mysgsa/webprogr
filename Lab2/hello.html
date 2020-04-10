@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script>
+			function count()
+			{
+				var str = input.value;
+				var count = str.match( /\d/g );
+				count = count ? count = count.length : 0;
+
+				var answer = "";
+				if (count == 0 )
+				{
+					answer = "No";
+					alert(answer);
+				}
+				else
+				{
+					answer ="Количество цифр: " + count;
+					alert(answer);
+				}				
+			}
+		</script>
+	</head>
+	
+	<body>
+		Hello World! </p>
+		<input id="input" size="40" ></p>
+		<a onmousemove="count()">Подсчитать</a>
+	</body>
+	
+</html>
