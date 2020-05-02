@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script>
+			let array = ["verblyud", "vol", "volk"];
+
+			async function check() {
+				var animalname = null;
+				var imgwidth = null;
+				var imgheight = null;
+				var imgcolor = null;
+				var imgvalue = null;
+
+				animalname = animal.value;
+				imgwidth = width.value;
+				imgheight = height.value;
+				imgcolor = color.value;
+				imgvalue = value.value;
+
+				let animanlsJSON = {
+					name: animalname, 
+					width: imgwidth, 
+					height: imgheight,
+					color: imgcolor,
+					value: imgvalue
+				};
+
+				let response = await fetch('./api/animal', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(animanlsJSON)
+				});
+				const json = await response.json();
+				console.log(json);
+				if (json.error != null)
+				{
+					var pjson = JSON.stringify(json);
+           			document.write(pjson);
+				}
+				else
+				{
+					document.write('<img id=myImg src= "">');
+					var img = json.image;
+					document.getElementById("myImg").src = "images/"+img+".jpg";
+					delete json._id;
+					delete json.__v;
+					var pjson = JSON.stringify(json);
+           			document.write(pjson);
+				}
+			}
+
+		</script>
+	</head>
+	
+	<body>
+		<a>Название животного</a><br>
+		<input id="animal" rows="1" cols="10"></input><p></p>
+		<a>Значение</a><br>
+		<input id="value" rows="1" cols="10"></input><p></p>
+		<a>Ширина</a><br>
+		<input id="width" rows="1" cols="10"></input><p>
+		<a>Высота</a><br>
+		<input id="height" rows="1" cols="10"></input><p>
+		<a>Цвет</a><br>
+		<input id="color" rows="1" cols="10"></input><p>
+		<input type="submit" value="Найти изображение" onclick="check()"/>
+	</body>
+	
+</html>
