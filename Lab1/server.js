@@ -6,13 +6,13 @@ var http = require("http");
 var fs = require("fs");
 //Создание http-сервера, использующего порт 8888
 http.createServer( function(request, response) {
-//загрузка html страницы из файловой системы
-var page = fs.readFileSync('hello.html');
-//запись в ответ заголовка с указанием кода состояния, и типа возвращаемого контента
-response.writeHead(200, { 'Content-Type': 'text/html' });
-//тело ответа
-response.write(page);
-//отправка ответа
-response.end();
+    //загрузка html страницы из файловой системы
+    var page = fs.readFileSync('hello.html');
+    //запись в ответ заголовка с указанием кода состояния, и типа возвращаемого контента
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    //тело ответа
+    response.write(page);
+    //отправка ответа
+    response.end();
 }).listen(8888);
 
